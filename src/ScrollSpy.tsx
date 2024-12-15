@@ -37,9 +37,8 @@ const sections: Section[] = [
     { id: "technology", label: "Our Technology" },
 ];
 
-
 const ScrollSpySidebar: React.FC = () => {
-    const [activeSection, setActiveSection] = useState<string>("");
+    const [activeSection, setActiveSection] = useState<string>("introduction");
     const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
     useEffect(() => {
@@ -47,7 +46,6 @@ const ScrollSpySidebar: React.FC = () => {
             sectionRefs.current.forEach((ref) => {
                 if (ref) {
                     const rect = ref.getBoundingClientRect();
-                    // Trigger activation when the section reaches the top (with some tolerance)
                     if (rect.top >= 0 && rect.top <= 200) {
                         setActiveSection(ref.id);
                     }
@@ -68,7 +66,7 @@ const ScrollSpySidebar: React.FC = () => {
             <div className="grid grid-cols-5">
                 {/* Sidebar */}
                 <div>
-                    <nav className=" col-span-2 sticky top-0 p-4 bg-gray-100">
+                    <nav className="col-span-2 sticky top-0 h-screen overflow-y-auto p-4 bg-gray-100">
                         <ul className="space-y-2">
                             {sections.map((section) => (
                                 <li key={section.id}>
@@ -88,7 +86,7 @@ const ScrollSpySidebar: React.FC = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className=" col-span-3 space-y-12">
+                <div className="col-span-3 space-y-12">
                     {sections.map((section, index) => (
                         <div
                             key={section.id}
@@ -107,6 +105,7 @@ const ScrollSpySidebar: React.FC = () => {
                             </p>
                         </div>
                     ))}
+                    <div className="section h-[200px]"></div>
                 </div>
             </div>
         </div>

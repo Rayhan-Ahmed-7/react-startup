@@ -46,7 +46,7 @@ const ScrollSpySidebar: React.FC = () => {
             sectionRefs.current.forEach((ref) => {
                 if (ref) {
                     const rect = ref.getBoundingClientRect();
-                    if (rect.top >= 0 && rect.top <= 200) {
+                    if (rect.top >= 0 && rect.top <= 120) {
                         setActiveSection(ref.id);
                     }
                 }
